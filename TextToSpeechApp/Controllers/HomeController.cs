@@ -72,6 +72,7 @@ namespace TextToSpeechApp.Controllers
         /// <returns></returns>
         public async Task<ActionResult> Translate(string token, string key, string content,string lang)
         {
+
             try
             {
                 if (!String.IsNullOrEmpty(content))
