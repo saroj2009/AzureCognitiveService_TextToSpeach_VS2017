@@ -1,0 +1,1 @@
+1) Add SubscriptionKey in "appsettings.json" which Cognitive service key you already genereted in azure portal. If not generated please generate and use the same.
