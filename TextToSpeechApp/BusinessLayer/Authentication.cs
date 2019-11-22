@@ -10,7 +10,7 @@ namespace TextToSpeechApp.BusinessLayer
        
         //Token url
         public static readonly string fetchTokenUri =
-        "https://southcentralus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+        "https://westus2.api.cognitive.microsoft.com/sts/v1.0/issueToken";
         private string subscriptionKey;
         private string authToken;
 

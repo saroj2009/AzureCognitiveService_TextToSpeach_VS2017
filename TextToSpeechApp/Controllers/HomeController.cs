@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,9 @@ using Microsoft.Extensions.Logging;
 using TextToSpeechApp.BusinessLayer;
 using TextToSpeechApp.BusinessLayer.Interface;
 using TextToSpeechApp.Models;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.Services.AppAuthentication;
+
 
 
 namespace TextToSpeechApp.Controllers
@@ -17,23 +21,26 @@ namespace TextToSpeechApp.Controllers
         IConfiguration _iconfiguration;
        
         TranslateTextService obj = new TranslateTextService();
+        private readonly IConfiguration configuration;
         public HomeController(ITextToSpeech textToSpeech, IConfiguration iconfiguration)
         {
             _textToSpeech = textToSpeech;
             _iconfiguration = iconfiguration;
-           
+            this.configuration = iconfiguration;
+
         }
         public ActionResult Index()
         {
             SpeechModel speechModel = new SpeechModel();
             return View(speechModel);
         }
-
-       
+        
         [HttpPost]
         public ActionResult Index(SpeechModel speechModel)
         {
-            var SubscriptionKey = _iconfiguration["SubscriptionKey"];
+            //App service application settings key name(i.e. "cognitiveservicekey1")
+            var demosecret = configuration["cognitiveservicekey1"];
+            var SubscriptionKey = demosecret;//"fe2c614fefb345dc89b821eed0aad444";// _iconfiguration["SubscriptionKey"];
            // ViewBag.Key = speechModel.SubscriptionKey;
 
             Authentication obj = new Authentication(SubscriptionKey);

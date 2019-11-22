@@ -23,7 +23,7 @@ namespace TextToSpeechApp.BusinessLayer
         public async Task<byte[]> TranslateText(string token, string key, string content, string lang)
         {
             //Request url for the speech api.
-            string uri = "https://southcentralus.tts.speech.microsoft.com/cognitiveservices/v1";
+            string uri = "https://westus2.tts.speech.microsoft.com/cognitiveservices/v1";
             //Generate Speech Synthesis Markup Language (SSML) 
             var requestBody = this.GenerateSsml(lang, "Female", this.ServiceName(lang), content);
 
